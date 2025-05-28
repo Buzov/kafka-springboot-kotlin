@@ -16,3 +16,35 @@ Cluster ID string kraft-cluster-id must be a valid UUID:
 export CLUSTER_ID=$(kafka-storage random-uuid)
 echo $CLUSTER_ID
 ```
+
+# 📦 What is provectuslabs/kafka-ui?
+
+[GitHub kafka-ui](https://github.com/provectus/kafka-ui)
+
+provectuslabs/kafka-ui is a lightweight open-source web UI for managing Kafka clusters. It allows you to:
+
+    - View brokers, topics, partitions, consumers
+    - Produce and consume messages manually
+    - Manage topic configurations
+    - Monitor consumer groups and offsets
+    - View real-time cluster state
+
+# ✅ Why it's used (and preferred)
+
+| Reason                              | Explanation                                                                          |
+| ------------------------------------| ------------------------------------------------------------------------------------ |
+| **✅ Simple and modern UI**         | Offers a clean, responsive interface with better UX than older tools like Kafka Tool |
+| **✅ No database required**         | Runs statelessly without needing external DBs — great for local Docker setups        |
+| **✅ Supports KRaft and ZooKeeper** | Compatible with both controller types, which is essential for KRaft-mode clusters    |
+| **✅ Actively maintained**          | Fast-growing project with frequent updates and strong community support              |
+| **✅ Easy Docker integration**      | Configuration via environment variables; minimal setup for use in `docker-compose`   |
+
+
+# 🔍 Alternatives (and why not used here)
+
+| Alternative                    | Why Not Used Here                                                                            |
+| ------------------------------ | -------------------------------------------------------------------------------------------- |
+| **Confluent Control Center**   | Requires Confluent Enterprise license, heavy dependencies                                    |
+| **AKHQ (previously Kafka HQ)** | Great option, but slightly heavier and more complex to configure (requires JVM, DB optional) |
+| **Kafdrop**                    | Lighter UI but limited features (e.g., message view only for uncompressed messages)          |
+
