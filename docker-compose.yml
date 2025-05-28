@@ -3,7 +3,7 @@ version: '3.8'
 services:
 
   kafka1:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.9.1
     container_name: kafka1
     hostname: kafka1
     ports:
@@ -21,7 +21,7 @@ services:
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
-      CLUSTER_ID: kraft-cluster-id
+      CLUSTER_ID: ${KAFKA_CLUSTER_ID}
     user: root
     volumes:
       - kafka1-data:/kafka/kraft-combined-logs
@@ -29,7 +29,7 @@ services:
       - kraft-net
 
   kafka2:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.9.1
     container_name: kafka2
     hostname: kafka2
     ports:
@@ -47,7 +47,7 @@ services:
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
-      CLUSTER_ID: kraft-cluster-id
+      CLUSTER_ID: ${KAFKA_CLUSTER_ID}
     user: root
     volumes:
       - kafka2-data:/kafka/kraft-combined-logs
@@ -55,7 +55,7 @@ services:
       - kraft-net
 
   kafka3:
-    image: confluentinc/cp-kafka:7.6.0
+    image: confluentinc/cp-kafka:7.9.1
     container_name: kafka3
     hostname: kafka3
     ports:
@@ -73,7 +73,7 @@ services:
       KAFKA_DEFAULT_REPLICATION_FACTOR: 3
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
-      CLUSTER_ID: kraft-cluster-id
+      CLUSTER_ID: ${KAFKA_CLUSTER_ID}
     user: root
     volumes:
       - kafka3-data:/kafka/kraft-combined-logs
