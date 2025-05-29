@@ -12,6 +12,15 @@ docker-compose up -d
 docker-compose down -v
 ```
 
+# Restart containers completely with cleaning:
+
+```shell
+docker compose down -v --remove-orphans
+```
+```shell
+docker compose up -d --build --force-recreate
+```
+
 # 🆚 Kafka Docker Distributions – Comparison Overview
 
 | Image                                                                          | Description                                                                      | Pros                                                                            | Cons                                                                                      | Recommended Use Case                                 |
