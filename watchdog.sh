@@ -1,8 +1,7 @@
 #!/bin/sh
 
 # Install Docker CLI
-apk add --no-cache docker
-
+# apk add --no-cache docker
 echo "Starting watchdog to monitor unhealthy containers..."
 
 while true; do

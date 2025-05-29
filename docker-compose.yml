@@ -124,7 +124,7 @@ services:
       - kraft-net
 
   watchdog:
-    image: alpine
+    image: docker:24.0-cli  # ✅ CLI-only image with docker pre-installed
     container_name: watchdog
     restart: always
     volumes:
