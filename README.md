@@ -48,3 +48,7 @@ provectuslabs/kafka-ui is a lightweight open-source web UI for managing Kafka cl
 | **AKHQ (previously Kafka HQ)** | Great option, but slightly heavier and more complex to configure (requires JVM, DB optional) |
 | **Kafdrop**                    | Lighter UI but limited features (e.g., message view only for uncompressed messages)          |
 
+
+# healthcheck
+⚠️ Note: The kafka-topics command must be available inside the container for this health check to work. 
+It is included in images like confluentinc/cp-kafka and bitnami/kafka by default.
