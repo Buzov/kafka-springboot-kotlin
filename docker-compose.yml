@@ -186,6 +186,84 @@ services:
     networks:
       - kraft-net
 
+  consumer1:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    container_name: consumer1
+    ports:
+      - "8281:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KAFKA_BOOTSTRAP_SERVERS: kafka1:29092,kafka2:29094,kafka3:29096
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      kafka1:
+        condition: service_healthy
+      kafka2:
+        condition: service_healthy
+      kafka3:
+        condition: service_healthy
+    networks:
+      - kraft-net
+
+  consumer2:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    container_name: consumer2
+    ports:
+      - "8282:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KAFKA_BOOTSTRAP_SERVERS: kafka1:29092,kafka2:29094,kafka3:29096
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      kafka1:
+        condition: service_healthy
+      kafka2:
+        condition: service_healthy
+      kafka3:
+        condition: service_healthy
+    networks:
+      - kraft-net
+
+  consumer3:
+    build:
+      context: ./consumer
+      dockerfile: Dockerfile
+    container_name: consumer3
+    ports:
+      - "8283:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      KAFKA_BOOTSTRAP_SERVERS: kafka1:29092,kafka2:29094,kafka3:29096
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 60s
+    depends_on:
+      kafka1:
+        condition: service_healthy
+      kafka2:
+        condition: service_healthy
+      kafka3:
+        condition: service_healthy
+    networks:
+      - kraft-net
+
   watchdog:
     image: docker:24.0-cli  # ✅ CLI-only image with docker pre-installed
     container_name: watchdog
