@@ -1,5 +1,17 @@
 # kafka-springboot-kotlin
 
+# How to run
+
+```shell
+docker-compose up -d
+```
+
+# How to stop
+
+```shell
+docker-compose down -v
+```
+
 # 🆚 Kafka Docker Distributions – Comparison Overview
 
 | Image                                                                          | Description                                                                      | Pros                                                                            | Cons                                                                                      | Recommended Use Case                                 |
