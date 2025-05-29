@@ -22,6 +22,15 @@ services:
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       CLUSTER_ID: ${KAFKA_CLUSTER_ID}
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "kafka-topics --bootstrap-server localhost:9092 --list | grep -q '^$' || exit 0"
+      ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
     user: root
     volumes:
       - kafka1-data:/kafka/kraft-combined-logs
@@ -48,6 +57,15 @@ services:
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       CLUSTER_ID: ${KAFKA_CLUSTER_ID}
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "kafka-topics --bootstrap-server localhost:9094 --list | grep -q '^$' || exit 0"
+      ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
     user: root
     volumes:
       - kafka2-data:/kafka/kraft-combined-logs
@@ -74,6 +92,15 @@ services:
       KAFKA_MIN_INSYNC_REPLICAS: 2
       KAFKA_AUTO_CREATE_TOPICS_ENABLE: "false"
       CLUSTER_ID: ${KAFKA_CLUSTER_ID}
+    healthcheck:
+      test: [
+        "CMD-SHELL",
+        "kafka-topics --bootstrap-server localhost:9096 --list | grep -q '^$' || exit 0"
+      ]
+      interval: 30s
+      timeout: 30s
+      retries: 5
+      start_period: 60s
     user: root
     volumes:
       - kafka3-data:/kafka/kraft-combined-logs
@@ -95,6 +122,19 @@ services:
       - kafka3
     networks:
       - kraft-net
+
+  watchdog:
+    image: alpine
+    container_name: watchdog
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock  # Give access to Docker API
+      - ./watchdog.sh:/watchdog.sh  # Mounts script correctly
+    entrypoint: [ "sh", "/watchdog.sh" ]
+    working_dir: /
+    command: [ "sh", "/watchdog.sh" ]
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
 
 networks:
   kraft-net:
