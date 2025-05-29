@@ -4,6 +4,11 @@
 http://localhost:8180/swagger-ui.html
 ```
 
+# Actuator 
+```shell
+http://localhost:8180/actuator/health
+```
+
 # How to run the producer in the root compose
 
 ```shell
