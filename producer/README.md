@@ -1,3 +1,9 @@
+# Swagger
+
+```shell
+http://localhost:8180/swagger-ui.html
+```
+
 # How to run the producer in the root compose
 
 ```shell

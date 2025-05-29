@@ -14,7 +14,8 @@ class KafkaController(
     private val log: Logger = LoggerFactory.getLogger(KafkaController::class.java)
 
     @PostMapping
-    fun produce(@RequestParam topic: String, @RequestParam message: String): String {
+    fun produce(@RequestParam(defaultValue = "test") topic: String,
+                      @RequestParam message: String): String {
         log.info("Producing message: $message")
         producerService.sendMessage(topic, message)
         return "Message sent to $topic"
