@@ -2,6 +2,11 @@
 
 # How to run
 
+Need to build java applications
+```shell
+./gradlew clean bootJar
+```
+
 ```shell
 docker-compose up -d
 ```
@@ -19,6 +24,12 @@ docker compose down -v --remove-orphans
 ```
 ```shell
 docker compose up -d --build --force-recreate
+```
+
+# Check if topic exists
+
+```shell
+docker exec -it kafka1 kafka-topics --bootstrap-server kafka1:29092 --list
 ```
 
 # 🆚 Kafka Docker Distributions – Comparison Overview
