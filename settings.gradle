@@ -1,3 +1,4 @@
 rootProject.name = 'kafka-springboot-kotlin'
 
-include 'producer'
+include 'producer',
+        'consumer'

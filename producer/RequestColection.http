@@ -5,7 +5,7 @@ POST http://localhost:8080/kafka/create-topic?
     replicationFactor=1
 
 ###
-# Create simple message in the topic 'topic'
+# Create simple message in the topic 'test'
 POST http://localhost:8080/api/produce?
     topic=test&
     message={{$random.alphanumeric(8)}}
@@ -22,9 +22,26 @@ POST http://localhost:8180/kafka/create-topic?
     replicationFactor=1
 
 ###
-# Create simple message in the topic 'topic'
+# Create simple message in the topic 'test'
 POST http://localhost:8180/api/produce?
     topic=test&
+    message={{$random.alphanumeric(8)}}
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+content-length: 0
+
+###
+# Call from docker
+POST http://localhost:8180/kafka/create-topic?
+    name=user-events&
+    partitions=3&
+    replicationFactor=1
+
+###
+# Create simple message in the topic 'user-events'
+POST http://localhost:8180/api/produce?
+    topic=user-events&
     message={{$random.alphanumeric(8)}}
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
 Accept-Encoding: br, deflate, gzip, x-gzip
