@@ -1,6 +1,6 @@
 package com.javaquasar.kafka.consumer.service
 
-import com.javaquasar.kafka.consumer.dto.UserEvent
+import com.javaquasar.kafka.dto.UserEvent
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 import org.springframework.kafka.annotation.KafkaListener

@@ -1,6 +1,6 @@
 package com.javaquasar.kafka.producer.cofig
 
-import com.javaquasar.kafka.producer.dto.UserEvent
+import com.javaquasar.kafka.dto.UserEvent
 import org.springframework.kafka.core.KafkaTemplate
 import org.springframework.stereotype.Service
 

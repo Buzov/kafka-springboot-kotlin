@@ -4,7 +4,7 @@ import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
 import com.javaquasar.kafka.producer.cofig.KafkaProducerService
-import com.javaquasar.kafka.producer.dto.UserEvent
+import com.javaquasar.kafka.dto.UserEvent
 import org.springframework.web.bind.annotation.*
 
 @RestController

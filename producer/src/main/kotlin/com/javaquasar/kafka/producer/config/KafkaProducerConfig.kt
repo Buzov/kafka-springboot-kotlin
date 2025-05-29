@@ -1,6 +1,6 @@
 package com.javaquasar.kafka.producer.cofig
 
-import com.javaquasar.kafka.producer.dto.UserEvent
+import com.javaquasar.kafka.dto.UserEvent
 import org.apache.kafka.clients.admin.AdminClient
 import org.apache.kafka.clients.admin.AdminClientConfig
 import org.apache.kafka.clients.producer.ProducerConfig

@@ -1,6 +1,6 @@
 package com.javaquasar.kafka.producer.cofig
 
-import com.javaquasar.kafka.consumer.dto.UserEvent
+import com.javaquasar.kafka.dto.UserEvent
 import org.apache.kafka.clients.consumer.ConsumerConfig
 import org.apache.kafka.common.serialization.StringDeserializer
 import org.springframework.beans.factory.annotation.Value

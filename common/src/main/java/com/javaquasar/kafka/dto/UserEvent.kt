@@ -1,4 +1,4 @@
-package com.javaquasar.kafka.consumer.dto
+package com.javaquasar.kafka.dto
 
 data class UserEvent(
     val id: String,
