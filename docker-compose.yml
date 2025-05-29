@@ -33,7 +33,7 @@ services:
       start_period: 60s
     user: root
     volumes:
-      - kafka1-data:/kafka/kraft-combined-logs
+      - ./kafka1-data:/kafka/kraft-combined-logs
     networks:
       - kraft-net
 
@@ -68,7 +68,7 @@ services:
       start_period: 60s
     user: root
     volumes:
-      - kafka2-data:/kafka/kraft-combined-logs
+      - ./kafka2-data:/kafka/kraft-combined-logs
     networks:
       - kraft-net
 
@@ -103,7 +103,7 @@ services:
       start_period: 60s
     user: root
     volumes:
-      - kafka3-data:/kafka/kraft-combined-logs
+      - ./kafka3-data:/kafka/kraft-combined-logs
     networks:
       - kraft-net
 
