@@ -6,13 +6,13 @@ POST http://localhost:8080/kafka/create-topic?
 
 ###
 # Create simple message in the topic 'test'
-POST http://localhost:8080/api/produce?
+POST http://localhost:8080/api/produce/text?
     topic=test&
+    key={{$random.alphanumeric(8)}}&
     message={{$random.alphanumeric(8)}}
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
-content-length: 0
 
 ###
 # Call from docker
@@ -23,27 +23,50 @@ POST http://localhost:8180/kafka/create-topic?
 
 ###
 # Create simple message in the topic 'test'
-POST http://localhost:8180/api/produce?
+POST http://localhost:8180/api/produce/text?
     topic=test&
+    key={{$random.alphanumeric(8)}}&
     message={{$random.alphanumeric(8)}}
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
-content-length: 0
 
 ###
 # Call from docker
 POST http://localhost:8180/kafka/create-topic?
-    name=user-events&
+    name=text-topic&
     partitions=3&
-    replicationFactor=1
+    replicationFactor=2
 
 ###
-# Create simple message in the topic 'user-events'
-POST http://localhost:8180/api/produce?
-    topic=user-events&
+POST http://localhost:8180/kafka/create-topic?
+    name=user-events&
+    partitions=3&
+    replicationFactor=2
+
+###
+# Create simple message in the topic 'text-topic'
+POST http://localhost:8180/api/produce/text?
+    topic=text-topic&
+    key={{$random.alphanumeric(8)}}&
     message={{$random.alphanumeric(8)}}
 User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
 Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
-content-length: 0
+
+###
+# Create simple message in the topic 'user-events'
+POST http://localhost:8180/api/produce/json?
+    topic=user-events&
+    key={{$random.alphanumeric(8)}}&
+    message={{$random.alphanumeric(8)}}
+User-Agent: IntelliJ HTTP Client/IntelliJ IDEA 2025.1
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+Content-Type: application/json
+
+{
+  "id": {{$random.integer(4)}},
+  "name": "message={{$random.alphanumeric(8)}}",
+  "timestamp": {{$timestamp}}
+}
